@@ -3,7 +3,15 @@ let speakButton = document.querySelector('#startBTN');
 let textInput = document.querySelector('#text');
 
 
+textInput.addEventListener('focus', () => {
+    textInput.setAttribute('style', 'border: 2px solid rgb(80, 97, 252)')
+})
+
 speakButton.addEventListener('click', (event) => {
+
+    
+
+    speakButton.textContent = "Reproduzindo..."
     event.preventDefault()
 
     let text = textInput.value
@@ -13,5 +21,12 @@ speakButton.addEventListener('click', (event) => {
         
         const utterance = new SpeechSynthesisUtterance(text);
         window.speechSynthesis.speak(utterance);
+
+        setTimeout( () => {
+            speakButton.textContent = "Reproduzir"
+
+        },2500)
     }
+
+    
 });
